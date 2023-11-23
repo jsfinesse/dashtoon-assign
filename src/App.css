@@ -1,0 +1,98 @@
+.parent {
+    margin: auto;
+    text-align: center;
+    /* width: 50%; */
+}
+
+[required] {
+    outline-color:red;
+    box-shadow: none;
+}
+
+.comic-panel {
+    font-family: "Comic Sans MS", cursive;
+}
+
+.page-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.comic-panel-item {
+    margin: 10px;
+    text-align: center;
+    width: 45%;
+    position: relative;
+}
+
+.comic-image {
+    border: 3px solid #4caf50;
+    border-radius: 5px;
+    background-color: white; /* Image background color */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Image box shadow */
+    width: 100%;
+}
+
+.speech-bubble {
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    border: 2px solid #4caf50;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.query-input {
+    grid-column: span 1;
+    margin-bottom: 20px;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    outline: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #b5b5b5;
+}
+
+input:focus {
+    outline: 3px solid #4caf50;
+}
+
+.button-container {
+    grid-column: span 2;
+    text-align: center;
+}
+
+.fetch-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
