@@ -6,7 +6,7 @@ import Loader from "./components/Loader";
 import "./App.css";
 
 const ComicPanel = () => {
-    const [queries, setQueries] = useState([
+    const initialQueriesState = [
         { prompt: "", text: "" },
         { prompt: "", text: "" },
         { prompt: "", text: "" },
@@ -17,8 +17,9 @@ const ComicPanel = () => {
         { prompt: "", text: "" },
         { prompt: "", text: "" },
         { prompt: "", text: "" },
-    ]);
+    ];
 
+    const [queries, setQueries] = useState(initialQueriesState);
     const [images, setImages] = useState([]);
     const [loading, setLoading] = useState(false);
     const [buttonPressed, setButtonPressed] = useState(false);
@@ -28,6 +29,13 @@ const ComicPanel = () => {
         const newQueries = [...queries];
         newQueries[index][field] = value;
         setQueries(newQueries);
+    };
+
+    const handleReset = () => {
+        setQueries(initialQueriesState);
+        setImages([]);
+        setLoading(false);
+        setButtonPressed(false);
     };
 
     const fetchData = async () => {
@@ -72,6 +80,15 @@ const ComicPanel = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const isAnyFieldEmpty = queries.some(
+            ({ prompt, text }) => !prompt || !text
+        );
+
+        if (isAnyFieldEmpty) {
+            toast.error("Please fill in all the input fields");
+            return;
+        }
+
         setLoading(true);
         setIsSubmitting(true);
         fetchData();
@@ -92,8 +109,12 @@ const ComicPanel = () => {
                                 <label>
                                     Query {index + 1}:
                                     <input
-                                        required
-                                        className={isSubmitting && !query.prompt.trim() ? "invalid" : ""}
+                                        // required
+                                        className={
+                                            isSubmitting && !query.prompt.trim()
+                                                ? "invalid"
+                                                : ""
+                                        }
                                         type="text"
                                         value={query.prompt}
                                         onChange={(e) =>
@@ -110,8 +131,12 @@ const ComicPanel = () => {
                                 <label>
                                     Text {index + 1}:
                                     <input
-                                        required
-                                        className={isSubmitting && !query.text.trim() ? "invalid" : ""}
+                                        // required
+                                        className={
+                                            isSubmitting && !query.text.trim()
+                                                ? "invalid"
+                                                : ""
+                                        }
                                         type="text"
                                         value={query.text}
                                         onChange={(e) =>
@@ -129,6 +154,13 @@ const ComicPanel = () => {
                     <div className="button-container">
                         <button type="submit" className="fetch-button">
                             Fetch Images
+                        </button>
+                        <button
+                            type="button"
+                            className="reset-button"
+                            onClick={handleReset}
+                        >
+                            Reset
                         </button>
                     </div>
                 </form>
