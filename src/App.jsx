@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -95,6 +95,10 @@ const ComicPanel = () => {
         setButtonPressed(true);
     };
 
+    useEffect(() => {
+        document.title = "Comic Book Panel Generator";
+    }, []);
+
     return (
         <div className="parent">
             <ToastContainer />
@@ -102,6 +106,15 @@ const ComicPanel = () => {
                 <h1 style={{ color: "#4caf50", margin: "10px 0 50px 0" }}>
                     Comic Book Panel
                 </h1>
+                <div className="project-description">
+                    <p>
+                        This project allows you to create a comic book panel
+                        using images generated from textual descriptions. Enter
+                        a description of the image in the &quot;Query&quot; field and
+                        provide a text annotation for the image in the &quot;Text&quot;
+                        field.
+                    </p>
+                </div>
                 <form onSubmit={handleSubmit}>
                     {queries.map((query, index) => (
                         <>

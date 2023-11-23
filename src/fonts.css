@@ -1,0 +1,6 @@
+@font-face {
+    font-family: "CustomFont";
+    src: local("CustomFont"), url("./fonts/BoldlyMissy.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}

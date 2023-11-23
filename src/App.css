@@ -9,7 +9,7 @@
 }
 
 .comic-panel {
-    font-family: "Comic Sans MS", cursive;
+    font-family: "CustomFont", sans-serif;
 }
 
 .page-container {
@@ -106,4 +106,23 @@ input:focus {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+}
+
+.project-description {
+    margin-bottom: 20px;
+    padding: 15px;
+    font-family: "CustomFont", sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    background: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(25)" opacity="0.8" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g  fill="%23d68810"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>'),
+        #ffcd28;
+    background-size: 13px, 100%;
+    font-weight: 700;
+    border: 0.4rem solid #000;
+    border-radius: 5px;
+}
+
+.project-description p {
+    margin: 0;
+    color: #333;
 }
