@@ -22,6 +22,7 @@ const ComicPanel = () => {
     const [images, setImages] = useState([]);
     const [loading, setLoading] = useState(false);
     const [buttonPressed, setButtonPressed] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleInputChange = (index, field, value) => {
         const newQueries = [...queries];
@@ -45,6 +46,8 @@ const ComicPanel = () => {
             toast.error(
                 "An error occurred while fetching data. Please try again."
             );
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -70,6 +73,7 @@ const ComicPanel = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setLoading(true);
+        setIsSubmitting(true);
         fetchData();
         setButtonPressed(true);
     };
@@ -89,6 +93,7 @@ const ComicPanel = () => {
                                     Query {index + 1}:
                                     <input
                                         required
+                                        className={isSubmitting && !query.prompt.trim() ? "invalid" : ""}
                                         type="text"
                                         value={query.prompt}
                                         onChange={(e) =>
@@ -106,6 +111,7 @@ const ComicPanel = () => {
                                     Text {index + 1}:
                                     <input
                                         required
+                                        className={isSubmitting && !query.text.trim() ? "invalid" : ""}
                                         type="text"
                                         value={query.text}
                                         onChange={(e) =>
